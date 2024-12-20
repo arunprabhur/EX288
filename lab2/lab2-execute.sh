@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-echo -e  "\n Starting script --> Creating an Image for bash script using Podman and run it in Openshift Cluster"
+echo -e  "\n Starting script --> Creating an app using docker file and run it in Openshift Cluster"
 
 prompt
 
