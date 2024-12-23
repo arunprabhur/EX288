@@ -16,6 +16,7 @@ execute "create docker registry secret" '''oc create secret docker-registry quay
 execute "describe docker secrets quay-secret" '''oc get secret quay-secret -o yaml'''
 execute "Importing Images from external registry to image stream" '''oc import-image ubi8/openjdk-21:1.21-1.1733300817 --from=registry.access.redhat.com/ubi8/openjdk-21:1.21-1.1733300817 --confirm'''
 execute "Check Image stream in project" '''oc get is'''
+execute "Check Image stream and its tag" '''oc get istag'''
 execute "Describe tags of the image stream" '''oc describe is openjdk'''
 execute "Deleting Project" '''oc delete project mylab1'''
 endofscript

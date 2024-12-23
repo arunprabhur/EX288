@@ -26,11 +26,16 @@ endofscript(){
 
 promptcommand(){
     COMMAND=$1
-    echo -e "Executing Command \n\n ${GREEN}${BOLD}${UNDERLINE}${COMMAND}${NONE}\n\n"
+    echo -e "Executing Command \n ${GREEN}${BOLD}${UNDERLINE}${COMMAND}${NONE}\n\n"
+}
+promptheading(){
+    HEADING=$1
+    echo -e "HEADING --> ${RED}${BOLD}${UNDERLINE}${HEADING}${NONE}"
 }
 
+
 execute(){
-    echo "${1}"
+    promptheading "${1}"
     promptcommand "${2}"
     ${2}
     prompt
