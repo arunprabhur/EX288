@@ -14,10 +14,11 @@ BOLD='\033[1m'
 UNDERLINE='\033[4m'
 
 
-prompt(){
+prompt(){     
     echo
     read -p "Press Enter Key to continue"
     echo
+    clear
 }
 
 endofscript(){
@@ -26,11 +27,11 @@ endofscript(){
 
 promptcommand(){
     COMMAND=$1
-    echo -e "Executing Command \n ${GREEN}${BOLD}${UNDERLINE}${COMMAND}${NONE}\n\n"
+    echo -e "${GREEN}${BOLD}${UNDERLINE}${COMMAND}${NONE}\n\n"
 }
 promptheading(){
     HEADING=$1
-    echo -e "HEADING --> ${RED}${BOLD}${UNDERLINE}${HEADING}${NONE}"
+    echo -e "${RED}${BOLD}${UNDERLINE}${HEADING}${NONE}"
 }
 
 
