@@ -8,7 +8,7 @@ prompt
 
 execute "login to OCP4" '''oc login -u developer -p developer https://api.ocp4.example.com:6443'''
 execute "Create New Project" '''oc new-project mylab1'''
-clear
+execute "Create a ubi-redhat-image stream" '''oc import-image ubi-redhat-is --from registry.access.redhat.com/ubi8-minimal:8.10-1154 --confirm'''
 echo -e "To run a local folder \n 1. oc new-app --name mybashapp --strategy docker \n"
 echo -e "2. oc start-build buildconfig/mybashapp --from-dir ."
 read -p "Enter to continue"

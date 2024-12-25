@@ -1,6 +1,6 @@
 #My First ContainerFile
 
-FROM registry.access.redhat.com/ubi8-minimal:latest
+FROM ubi-redhat-is
 
 MAINTAINER Arun prabhu.arun10@gmail.com
 LABEL project="Arun'sProject"
