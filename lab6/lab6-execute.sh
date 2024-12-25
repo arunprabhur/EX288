@@ -12,7 +12,7 @@ execute "Create a ubi-redhat-image stream" '''oc import-image ubi-redhat-is --fr
 echo -e "To run a local folder \n 1. oc new-app --name mybashapp --strategy docker \n"
 echo -e "2. oc start-build buildconfig/mybashapp --from-dir ."
 read -p "Enter to continue"
-execute "Creating New app for the bash app from git" '''oc new-app --strategy docker --name mybashapp --context-dir /lab2 https://github.com/arunprabhur/EX288.git'''
+execute "Creating New app for the bash app from git" '''oc new-app --strategy docker --name mybashapp --context-dir /lab6 https://github.com/arunprabhur/EX288.git'''
 sleep 15
 execute "check pods running status" '''oc get po'''
 sleep 15
