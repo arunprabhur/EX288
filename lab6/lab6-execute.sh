@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-echo -e  "\n Starting script --> Creating an app using docker file from git and run it in Openshift Cluster"
+echo -e  "\n Starting script --> Import image into image stream, run a app with that stream and switch the app with new base image by changing the pointer in image stream of Openshift Cluster"
 
 prompt
 
@@ -18,8 +18,11 @@ execute "check pods running status" '''oc get po'''
 sleep 15
 clear
 execute "View all resources created" ''' oc get all'''
-execute "Scale up to 5 pods" '''oc scale --replicas 5 deployment/mybashapp'''
-execute "view scaled up pods" '''oc get po'''
+execute "View the ubi-redhat-is tagged image" '''oc get istag'''
+execute "Change tag of ubi-redhat-is from redhat 8 to redhat 9" '''oc tag registry.access.redhat.com/ubi9-minimal:9.5-1734497536 ubi-redhat-is:latest'''
+execute "view again ubi-redhat-is image tagged now" '''oc get istag'''
+execute "describe ubi-redhat-is image to see all tags" ''' oc describe is/ubi-redhat-is'''
+execute "Check whether new build is created and running" '''oc get po'''
 execute "Deleting Project" '''oc delete project mylab1'''
 endofscript
 
