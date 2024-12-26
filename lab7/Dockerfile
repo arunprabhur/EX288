@@ -1,6 +1,6 @@
 #My First ContainerFile
 
-FROM ubi-redhat-is
+FROM registry.access.redhat.com/ubi8-minimal:latest
 
 MAINTAINER Arun prabhu.arun10@gmail.com
 LABEL project="Arun'sProject"
@@ -16,7 +16,7 @@ RUN mkdir project
 ADD test.sh project/
 
 #Execute my script while starting container
-ENTRYPOINT ["/opt/project/test"]
+ENTRYPOINT ["/opt/project/executable"]
 
 CMD ["Sample","Text"]
  
