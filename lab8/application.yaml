@@ -64,7 +64,7 @@ items:
     postCommit: {}
     resources: {}
     source:
-      contextDir: /lab7
+      contextDir: /lab8
       git:
         uri: https://github.com/arunprabhur/EX288.git
       type: Git
@@ -76,10 +76,10 @@ items:
       type: Docker
     triggers:
     - github:
-        secret: -uqFnCbTDgFUYgJ-qNxZ
+        secret: iBn6VKMRItoIQ3XwMzP7
       type: GitHub
     - generic:
-        secret: 6pnsjmkpCTUco78SCMT6
+        secret: vErd8RESF67Wtdp7a_Uk
       type: Generic
     - type: ConfigChange
     - imageChange: {}

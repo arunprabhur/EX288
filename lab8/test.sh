@@ -17,6 +17,6 @@ trap graceful_shutdown  SIGINT SIGTERM
 while [ ${FLAG} -eq 1 ]
 do
 	echo "Hello ${1} -- ${2}"
-	echo "from test.sh: $(date)" >log.txt
+	echo "from test.sh: $(date)" >/opt/project/log.txt
 	sleep 10
 done
