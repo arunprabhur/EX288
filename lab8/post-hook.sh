@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo "Hello World" 
+echo "Post Hook lifecycle started"
+
+touch testfile.txt
+
+echo "Test file created"
