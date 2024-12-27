@@ -104,6 +104,11 @@ items:
     strategy:
       type: Recreate
       recreateParams:
+        pre:
+          failurePolicy: Abort
+          execNewPod:
+            containerName: mybashapp
+            command: ["/opt/project/pre-hook.sh"]
         post:
           failurePolicy: Abort
           execNewPod: 

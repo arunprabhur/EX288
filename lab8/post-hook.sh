@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Post Hook lifecycle started"
+echo "Post Hook lifecycle - Scripting Area"
 
-touch /opt/project/testfile.txt
 
-echo "Test file created"
