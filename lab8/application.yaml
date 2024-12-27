@@ -1,49 +1,5 @@
 apiVersion: v1
 items:
-- apiVersion: image.openshift.io/v1
-  kind: ImageStream
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: null
-    labels:
-      app: mybashapp
-      app.kubernetes.io/component: mybashapp
-      app.kubernetes.io/instance: mybashapp
-    name: ubi8-minimal
-  spec:
-    lookupPolicy:
-      local: false
-    tags:
-    - annotations:
-        openshift.io/imported-from: registry.access.redhat.com/ubi8-minimal:latest
-      from:
-        kind: DockerImage
-        name: registry.access.redhat.com/ubi8-minimal:latest
-      generation: null
-      importPolicy:
-        importMode: Legacy
-      name: latest
-      referencePolicy:
-        type: ""
-  status:
-    dockerImageRepository: ""
-- apiVersion: image.openshift.io/v1
-  kind: ImageStream
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: null
-    labels:
-      app: mybashapp
-      app.kubernetes.io/component: mybashapp
-      app.kubernetes.io/instance: mybashapp
-    name: mybashapp
-  spec:
-    lookupPolicy:
-      local: false
-  status:
-    dockerImageRepository: ""
 - apiVersion: build.openshift.io/v1
   kind: BuildConfig
   metadata:
@@ -76,10 +32,10 @@ items:
       type: Docker
     triggers:
     - github:
-        secret: LH_bF_kcMWDpYzeToZON
+        secret: FJ_ykLZ0aNlzEKyJNnA_
       type: GitHub
     - generic:
-        secret: VlfsZRAcUUBEvWBgdDqK
+        secret: qwF5udECkK_uJTdVGMne
       type: Generic
     - type: ConfigChange
     - imageChange: {}
@@ -108,7 +64,7 @@ items:
           failurePolicy: Abort
           execNewPod:
             containerName: mybashapp
-            command: ["sleep 10 & echo '''post-hook - executing commands''' "]
+            command: ["/opt/project/post-hook.sh"]  
       resources: {}
     template:
       metadata:

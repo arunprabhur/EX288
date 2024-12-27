@@ -14,6 +14,7 @@ RUN mkdir project
 
 #Move the script to container user folder
 ADD test.sh project/
+COPY post-hook.sh project/
 
 #Adding group access for root, Openshift user will be part of this group
 RUN chgrp -R 0 project &&  chmod -R g=u project
