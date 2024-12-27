@@ -15,6 +15,10 @@ RUN mkdir project
 #Move the script to container user folder
 ADD test.sh project/
 
+#Adding group access for root, Openshift user will be part of this group
+RUN chgrp -R 0 project &&  chmod -R g=u project
+
+USER 1000
 #Execute my script while starting container
 ENTRYPOINT ["/opt/project/test.sh"]
 
