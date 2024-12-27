@@ -76,10 +76,10 @@ items:
       type: Docker
     triggers:
     - github:
-        secret: 4O8-aF0FAGDPMQBZYv2_
+        secret: LH_bF_kcMWDpYzeToZON
       type: GitHub
     - generic:
-        secret: h37jqE8ijhCX8EuzExeS
+        secret: VlfsZRAcUUBEvWBgdDqK
       type: Generic
     - type: ConfigChange
     - imageChange: {}
@@ -102,6 +102,13 @@ items:
     selector:
       deploymentconfig: mybashapp
     strategy:
+      type: Recreate
+      recreateParams:
+        post:
+          failurePolicy: Abort
+          execNewPod:
+            containerName: mybashapp
+            command: ["sleep 10 & echo '''post-hook - executing commands''' "]
       resources: {}
     template:
       metadata:
