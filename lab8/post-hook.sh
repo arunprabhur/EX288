@@ -2,6 +2,6 @@
 
 echo "Post Hook lifecycle started"
 
-touch testfile.txt
+touch /opt/project/testfile.txt
 
 echo "Test file created"
