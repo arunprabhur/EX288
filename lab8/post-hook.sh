@@ -1,1 +1,3 @@
-echo "Hello World" > /opt/project/log.txt
+#!/bin/bash
+
+echo "Hello World" 
