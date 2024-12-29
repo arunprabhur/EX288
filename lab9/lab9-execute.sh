@@ -14,6 +14,8 @@ execute "Creating New app for the bash app from git" '''oc new-app --strategy do
 execute "Setting the secret to environment variable of the pods" '''oc set env deployment mybashapp --from secret/mybashappsecret'''
 execute "Setting the cm to environment variable of the pods" '''oc set env deployment mybashapp --from cm/mybashcm'''
 execute "Check whether new build is created and running" '''watch -n 2 oc get po'''
+execute "Updating the value of secret dynamically" '''oc set data secret/mybashappsecret --from-literal BASH_SECRET_ENV=UPDATED_VALUE'''
+
 execute "Deleting the project" '''oc delete project mylab1'''
 endofscript
 
