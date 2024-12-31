@@ -14,7 +14,7 @@ execute " setting startup probe " '''oc set probe deployment mybashapp --startup
 execute " setting readiness probe " '''oc set probe deployment mybashapp --readiness -- /opt/project/readinessprobe.sh'''
 
 execute " setting liveness probe " '''oc set probe deployment mybashapp --liveness -- /opt/project/livenessprobe.sh'''
-execute "check deployment yaml for these probes" '''oc get deployment mybashapp -o yaml | yq r - -C | less -R'''
+execute "check deployment yaml for these probes" '''oc get deployment mybashapp -o yaml'''
 execute "Deleting the project" '''oc delete project mylab1'''
 endofscript
 
