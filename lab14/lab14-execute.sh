@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-echo -e  "\n Starting script --> create pvc and apply into bash app, create app with statefulset with different pvc in Openshift Cluster"
+echo -e  "\n Starting script --> create helm and apply into bash app, install app, upgrade, rollback & uninstall in Openshift Cluster"
 
 prompt
 
@@ -16,7 +16,8 @@ oc new-app --strategy docker --name mybashapp --context-dir /lab2 https://github
 read -p "Press Enter to continue"
 echo "Adding NOTES.TXT --> Information regarding Bash Application is added in the notes > NOTES>txt"
 echo "Information regarding Bash Application is added in the notes" > myhelmchart/templates/NOTES.txt
-
+tree .
+read -p "Press Enter to continue"
 execute "Installing using helm chart" ''' helm install myhelmchart myhelmchart'''
 execute "Watch the pods running" '''watch oc get po'''
 execute "view helm apps" '''helm ls'''
