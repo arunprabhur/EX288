@@ -9,12 +9,12 @@ prompt
 execute "login to OCP4" '''oc login -u developer -p developer https://api.ocp4.example.com:6443'''
 execute "Create New Project" '''oc new-project mylab1'''
 execute "Creating new Helm Chart" '''helm create myhelmchart'''
-execute "Removing default files from templates of helm folder" ''' rm myhelmchart/templates/*.yaml'''
+execute "Removing default files from templates of helm folder" ''' rm myhelmchart/templates/*.yaml myhelmchart/templates/tests/*'''
 echo "Creating application yaml into helm chart myhelmchar" 
 echo "oc new-app --strategy docker --name mybashapp --context-dir /lab2 https://github.com/arunprabhur/EX288.git -o yaml > myhelmchart/templates/application.yaml"
 oc new-app --strategy docker --name mybashapp --context-dir /lab2 https://github.com/arunprabhur/EX288.git -o yaml > myhelmchart/templates/application.yaml
 read -p "Press Enter to continue"
-echo "Adding NOTES.TXT --> Information regarding Bash Application is added in the notes > NOTES>txt"
+echo "Adding NOTES.TXT --> Information regarding Bash Application is added in the notes > myhelmchart/templates/tests/NOTES>txt"
 echo "Information regarding Bash Application is added in the notes" > myhelmchart/templates/NOTES.txt
 tree .
 read -p "Press Enter to continue"
