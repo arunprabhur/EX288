@@ -1,0 +1,50 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    meta.helm.sh/release-name: myapp
+    meta.helm.sh/release-namespace: {{ .Values.project }} 
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2025-01-07T06:43:50Z"
+  generation: 2
+  labels:
+    app: mybashapp
+    app.kubernetes.io/component: mybashapp
+    app.kubernetes.io/instance: mybashapp
+    app.kubernetes.io/managed-by: Helm
+  name: mybashapp
+  namespace: {{ .Values.project }}
+  resourceVersion: "5922535"
+  uid: a553d7e9-2662-493d-831f-31c0d24ca534
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: mybashapp:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: /lab12
+    git:
+      uri: https://github.com/arunprabhur/EX288.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: ubi8:8.10-1161
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: U10bvpwK9FGXhem7pZgr
+    type: GitHub
+  - generic:
+      secret: ZAPUGgett0OWCX8mukSm
+    type: Generic
+  - type: ConfigChange
+  - imageChange: {}
+    type: ImageChange

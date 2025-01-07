@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mybashapp
+spec:
+  selector:
+    matchLabels:
+      app: mybashapp
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: mybashapp
+    spec:
+      containers:
+        - image: default-route-openshift-image-registry.apps.ocp4.example.com/{{ .Values.project }}/mybashapp
+          name: mybashapp
+          volumeMounts:
+            - name: mybashapp-pvc
+              mountPath: /var/lib/mysql
+              subPath: mybashapp
+  volumeClaimTemplates:
+  - metadata:
+      name: mybashapp-pvc
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-storage
+      resources:
+        requests:
+          storage: {{ .Values.storagesize }}
