@@ -5,3 +5,16 @@
 project: mylab1
 replicaCount: 3
 storagesize: 1Gi
+GitURL: https://github.com/arunprabhur/EX288.git
+
+favorite:
+  drink: "cae"
+  food: "Dosa"
+
+pizzaToppings:
+  - mushrooms
+  - cheese
+  - peppers
+  - onions
+
+

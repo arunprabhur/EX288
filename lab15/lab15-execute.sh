@@ -10,7 +10,9 @@ execute "login to OCP4" '''oc login -u developer -p developer https://api.ocp4.e
 execute "Create New Project" '''oc new-project mylab1'''
 execute "Creating New app for the bash app from git using helm chart" '''helm install --set replicaCount=5  myapp  mystatefulapp'''
 execute "watch  pods" '''watch oc get po'''
-execute "Helm upgrade to 3 replicas" '''helm upgrade --set replicaCount=3 myapp mystatefulapp'''
+execute "view the values.yaml file" '''cat mystatefulapp/values.yaml'''
+execute "View the test config map file" '''cat mystatefulapp/templates/test-configmap.yaml'''
+execute "Render the Go template and view the result" ''' helm template mystatefulapp'''
 execute "Uninstall app using helm" '''helm uninstall myapp'''
 execute "Deleting the project" '''oc delete project mylab1'''
 endofscript
