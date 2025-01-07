@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-echo -e  "\n Starting script --> create pvc and apply into bash app, create app with statefulset with different pvc in Openshift Cluster"
+echo -e  "\n Starting script --> create app  using helm and understanding Go templates using a test configmap in Openshift Cluster"
 
 prompt
 
