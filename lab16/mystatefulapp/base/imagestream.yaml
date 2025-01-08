@@ -1,0 +1,48 @@
+apiVersion: v1
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: mybashapp
+      app.kubernetes.io/component: mybashapp
+      app.kubernetes.io/instance: mybashapp
+    name: ubi8
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        openshift.io/imported-from: registry.access.redhat.com/ubi8:8.10-1161
+      from:
+        kind: DockerImage
+        name: registry.access.redhat.com/ubi8:8.10-1161
+      generation: null
+      importPolicy:
+        importMode: Legacy
+      name: 8.10-1161
+      referencePolicy:
+        type: ""
+  status:
+    dockerImageRepository: ""
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: mybashapp
+      app.kubernetes.io/component: mybashapp
+      app.kubernetes.io/instance: mybashapp
+    name: mybashapp
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: ""
+kind: List
+metadata: {}

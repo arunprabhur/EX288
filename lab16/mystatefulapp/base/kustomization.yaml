@@ -1,0 +1,6 @@
+resources:
+  - imagestream.yaml
+  - statefulset.yaml
+  - buildconfig.yaml
+  - test-configmap.yaml
+
