@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Task
 metadata:
   name: myfirsttask
-  namespace: mylab
+  namespace: mylab1
 spec: 
   workspaces:
   - name: taskspace

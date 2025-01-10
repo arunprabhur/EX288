@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: myfirst-pipeline
-  namespace: mylab
+  namespace: mylab1
 spec:
   params: []
   workspaces: 
@@ -31,6 +31,17 @@ spec:
       workspace: pipeworkspace
     runAfter: 
     - sayhello
+
+  - name: add-oc-client-version
+    taskRef:
+      name: openshift-client
+      kind: ClusterTask
+    params:
+    - name: SCRIPT
+      value: oc version
+    runAfter:
+    - sayhello
+
   - name: displayhello
     taskRef: 
       name: myfirsttask
@@ -43,3 +54,5 @@ spec:
       workspace: pipeworkspace
     runAfter:
     - sayhelloagain
+
+
