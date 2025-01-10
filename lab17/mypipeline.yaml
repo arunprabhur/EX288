@@ -1,0 +1,45 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: myfirst-pipeline
+  namespace: mylab
+spec:
+  params: []
+  workspaces: 
+  - name: pipeworkspace
+  tasks: 
+  - name: sayhello
+    taskRef: 
+      name: myfirsttask
+      kind: Task
+    params:
+    - name: ARGS
+      value: echo "Saying Hello to you" > Hello.txt
+    workspaces:
+    - name: taskspace
+      workspace: pipeworkspace
+    
+  - name: sayhelloagain
+    taskRef: 
+      name: myfirsttask
+      kind: Task
+    params:
+    - name: ARGS
+      value: echo "Saying Hello again" >> Hello.txt
+    workspaces:
+    - name: taskspace
+      workspace: pipeworkspace
+    runAfter: 
+    - sayhello
+  - name: displayhello
+    taskRef: 
+      name: myfirsttask
+      kind: Task
+    params:
+    - name: ARGS
+      value: cat Hello.txt
+    workspaces:
+    - name: taskspace
+      workspace: pipeworkspace
+    runAfter:
+    - sayhelloagain
