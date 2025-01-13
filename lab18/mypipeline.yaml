@@ -43,7 +43,7 @@ spec:
       kind: ClusterTask
     params:
     - name: SCRIPT
-      value: oc apply -f lab18/deploy/application.yaml
+      value: pwd && ls -lrt & oc apply -f lab18/deploy/application.yaml
     runAfter:
     - git-clone
 
