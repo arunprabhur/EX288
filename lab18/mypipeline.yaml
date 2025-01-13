@@ -41,9 +41,12 @@ spec:
     taskRef:
       name: openshift-client
       kind: ClusterTask
+    workspaces:
+    - name: manifest-dir
+      workspace: pipeworkspace
     params:
     - name: SCRIPT
-      value: pwd && ls -lrt & oc apply -f lab18/deploy/application.yaml
+      value: pwd && ls -lrt && oc apply -f lab18/deploy/application.yaml
     runAfter:
     - git-clone
 
