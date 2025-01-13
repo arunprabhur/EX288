@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: mysecondtask
+  namespace: mylab
+spec: 
+  workspaces:
+  - name: taskspace
+  params:
+  - name: ARGS
+    type: string
+    default: echo Hello
+  steps:
+  - name: simpletest
+    image: registry.ocp4.example.com:8443/ubi8/ubi
+    workingDir: $(workspaces.taskspace.path)
+    script: | 
+      $(params.ARGS)
+      echo " Task Completed"
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 65532
+
+

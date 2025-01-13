@@ -1,0 +1,50 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: mysecond-pipeline
+  namespace: mylab
+spec:
+  params: []
+  workspaces: 
+  - name: pipeworkspace
+  tasks: 
+  - name: git-clone
+    taskRef: 
+      name: git-clone
+      kind: ClusterTask
+    workspaces: 
+    - name: output 
+      workspace: pipeworkspace
+    params:
+    - name: url
+      value: https://github.com/arunprabhur/EX288.git
+    - name: revision
+      value: main
+    - name: sslVerify
+      value: "false"
+    - name: deleteExisting
+      value: "true"
+  - name: list-git-files
+    taskRef: 
+      name: myfirsttask
+      kind: Task
+    params:
+    - name: ARGS
+      value: ls -lrt
+    workspaces:
+    - name: taskspace
+      workspace: pipeworkspace
+    runAfter: 
+    - git-clone
+
+  - name: add-oc-client-version
+    taskRef:
+      name: openshift-client
+      kind: ClusterTask
+    params:
+    - name: SCRIPT
+      value: oc apply -f lab18/deploy/application.yaml
+    runAfter:
+    - git-clone
+
+
