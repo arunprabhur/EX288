@@ -16,7 +16,7 @@ spec:
     workingDir: $(workspaces.taskspace.path)
     script: | 
       $(params.ARGS)
-      echo " Task Completed"
+      echo "$(params.ARGS) -->  Task Completed"
     securityContext:
       runAsNonRoot: true
       runAsUser: 65532
